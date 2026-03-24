@@ -44,7 +44,7 @@ export default function HeroSection() {
             <div className="relative w-48 h-48 md:w-56 md:h-56">
               <div className="absolute inset-0 rounded-3xl overflow-hidden border-2 border-blue-500/50 group">
                 <img
-                  src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=400"
+                  src="/avatar.png"
                   alt="Tiago Fortes Coronel"
                   className="w-full h-full object-cover"
                 />

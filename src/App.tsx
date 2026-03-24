@@ -1,23 +1,51 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Landing from "./components/pages/Landing";
 import DeveloperWorkspace from "./components/pages/DeveloperWorkspace";
 import BeatmakerWorkspace from "./components/pages/BeatmakerWorkspace";
 
 export default function App() {
-  const [lastWorkspace, setLastWorkspace] = useState<"dev" | "beat" | null>(
-    null,
-  );
+  const [, setLastWorkspace] = useState<"dev" | "beat" | null>(null);
+  const [isLightMode, setIsLightMode] = useState(() => {
+    const storedTheme = localStorage.getItem("portfolio-theme");
+    return storedTheme === "light";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("portfolio-theme", isLightMode ? "light" : "dark");
+  }, [isLightMode]);
 
   return (
     <Router>
       <Routes>
         <Route
           path="/"
-          element={<Landing onWorkspaceSelect={setLastWorkspace} />}
+          element={
+            <Landing
+              onWorkspaceSelect={setLastWorkspace}
+              isLightMode={isLightMode}
+              onToggleTheme={() => setIsLightMode((prev) => !prev)}
+            />
+          }
         />
-        <Route path="/developer" element={<DeveloperWorkspace />} />
-        <Route path="/beatmaker" element={<BeatmakerWorkspace />} />
+        <Route
+          path="/developer"
+          element={
+            <DeveloperWorkspace
+              isLightMode={isLightMode}
+              onToggleTheme={() => setIsLightMode((prev) => !prev)}
+            />
+          }
+        />
+        <Route
+          path="/beatmaker"
+          element={
+            <BeatmakerWorkspace
+              isLightMode={isLightMode}
+              onToggleTheme={() => setIsLightMode((prev) => !prev)}
+            />
+          }
+        />
       </Routes>
     </Router>
   );

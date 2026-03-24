@@ -57,9 +57,19 @@ const timeline = [
   },
 ];
 
-export default function ExperienceSection() {
+interface ExperienceSectionProps {
+  isLightMode: boolean;
+}
+
+export default function ExperienceSection({
+  isLightMode,
+}: ExperienceSectionProps) {
   return (
-    <section className="max-w-7xl mx-auto px-4 py-20 border-t border-slate-800">
+    <section
+      className={`max-w-7xl mx-auto px-4 py-20 border-t ${
+        isLightMode ? "border-slate-200" : "border-white/10"
+      }`}
+    >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -67,10 +77,14 @@ export default function ExperienceSection() {
         viewport={{ once: true }}
         className="mb-12"
       >
-        <h2 className="text-4xl font-bold text-white mb-2">
+        <h2
+          className={`section-title mb-2 ${isLightMode ? "text-slate-900" : ""}`}
+        >
           Experience & Education
         </h2>
-        <p className="text-gray-400">
+        <p
+          className={`section-subtitle ${isLightMode ? "text-slate-600" : ""}`}
+        >
           Éducation à gauche, expérience professionnelle à droite
         </p>
       </motion.div>
@@ -88,11 +102,15 @@ export default function ExperienceSection() {
             >
               <motion.div
                 whileHover={{ translateX: -5 }}
-                className="flex-1 bg-gradient-to-br from-blue-900/20 to-slate-900/20 border border-blue-500/30 rounded-xl p-6 hover:border-blue-400/60 transition-colors"
+                className="flex-1 glass-panel rounded-2xl p-6 hover:border-blue-300/40 transition-colors"
               >
                 <div className="flex items-start justify-between mb-2">
                   <div>
-                    <h3 className="text-xl font-bold text-white">
+                    <h3
+                      className={`text-xl font-bold ${
+                        isLightMode ? "text-slate-900" : "text-white"
+                      }`}
+                    >
                       {item.education.title}
                     </h3>
                     <p className="text-blue-400 font-semibold">
@@ -106,7 +124,7 @@ export default function ExperienceSection() {
                   {item.education.description.map((desc, descIdx) => (
                     <li
                       key={descIdx}
-                      className="text-gray-300 text-sm flex gap-2"
+                      className="text-slate-300 text-sm flex gap-2"
                     >
                       <span className="text-blue-400 mt-1">→</span>
                       <span>{desc}</span>
@@ -129,7 +147,7 @@ export default function ExperienceSection() {
 
                 <div className="w-1 h-4 bg-blue-500/80 rounded-full mt-2"></div>
 
-                <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full flex items-center justify-center mt-2">
+                <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mt-2 shadow-lg shadow-blue-500/30">
                   <span className="w-3 h-3 rounded-full bg-white/90"></span>
                 </div>
 
@@ -138,11 +156,15 @@ export default function ExperienceSection() {
 
               <motion.div
                 whileHover={{ translateX: 5 }}
-                className="flex-1 bg-gradient-to-br from-blue-900/20 to-slate-900/20 border border-blue-500/30 rounded-xl p-6 hover:border-blue-400/60 transition-colors"
+                className="flex-1 glass-panel rounded-2xl p-6 hover:border-blue-300/40 transition-colors"
               >
                 <div className="flex items-start justify-between mb-2">
                   <div>
-                    <h3 className="text-xl font-bold text-white">
+                    <h3
+                      className={`text-xl font-bold ${
+                        isLightMode ? "text-slate-900" : "text-white"
+                      }`}
+                    >
                       {item.work.title}
                     </h3>
                     <p className="text-blue-400 font-semibold">
@@ -150,7 +172,7 @@ export default function ExperienceSection() {
                     </p>
                   </div>
                   {item.work.location && (
-                    <span className="text-xs text-gray-400 px-3 py-1 bg-slate-800 rounded-full">
+                    <span className="text-xs text-slate-300 px-3 py-1 bg-slate-800/70 rounded-full border border-white/10">
                       {item.work.location}
                     </span>
                   )}
@@ -160,7 +182,7 @@ export default function ExperienceSection() {
                   {item.work.description.map((desc, descIdx) => (
                     <li
                       key={descIdx}
-                      className="text-gray-300 text-sm flex gap-2"
+                      className="text-slate-300 text-sm flex gap-2"
                     >
                       <span className="text-blue-400 mt-1">→</span>
                       <span>{desc}</span>
@@ -179,7 +201,11 @@ export default function ExperienceSection() {
           viewport={{ once: true }}
           className="mt-10 text-center"
         >
-          <span className="text-3xl md:text-5xl font-extrabold text-blue-400 tracking-wide">
+          <span
+            className={`text-3xl md:text-5xl font-extrabold text-blue-400 tracking-wide ${
+              isLightMode ? "" : "text-shimmer"
+            }`}
+          >
             MAINTENANT
           </span>
         </motion.div>
@@ -192,9 +218,9 @@ export default function ExperienceSection() {
         viewport={{ once: true }}
         className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6"
       >
-        <div className="bg-gradient-to-br from-blue-900/20 to-slate-900/20 border border-blue-500/30 rounded-xl p-6">
+        <div className="glass-panel rounded-2xl p-6">
           <h3 className="text-lg font-bold text-blue-400 mb-4">Soft Skills</h3>
-          <ul className="space-y-2 text-gray-300 text-sm">
+          <ul className="space-y-2 text-slate-300 text-sm">
             <li>✓ Resilient and adaptable</li>
             <li>✓ Team collaboration</li>
             <li>✓ Autonomous working</li>
@@ -204,11 +230,11 @@ export default function ExperienceSection() {
           </ul>
         </div>
 
-        <div className="bg-gradient-to-br from-blue-900/20 to-slate-900/20 border border-blue-500/30 rounded-xl p-6">
+        <div className="glass-panel rounded-2xl p-6">
           <h3 className="text-lg font-bold text-blue-400 mb-4">
             Hobbies & Interests
           </h3>
-          <ul className="space-y-2 text-gray-300 text-sm">
+          <ul className="space-y-2 text-slate-300 text-sm">
             <li>⚽ Football</li>
             <li>🎵 Beatmaking</li>
             <li>🥋 Brazilian Jujitsu</li>

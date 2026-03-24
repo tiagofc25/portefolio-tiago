@@ -1,15 +1,5 @@
 import { motion } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
-import { useEffect, useState } from "react";
-
-interface GitHubProject {
-  id: number;
-  name: string;
-  description: string;
-  url: string;
-  language: string;
-  stars: number;
-}
 
 const featuredProjects = [
   {
@@ -41,34 +31,17 @@ const featuredProjects = [
   },
 ];
 
-export default function ProjectsSection() {
-  const [projects, setProjects] = useState<GitHubProject[]>([]);
-  const [loading, setLoading] = useState(true);
+interface ProjectsSectionProps {
+  isLightMode: boolean;
+}
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await fetch(
-          "https://api.github.com/users/tiagofc25/repos?sort=updated&per_page=6",
-        );
-        const data = await response.json();
-        setProjects(
-          data.filter(
-            (p: GitHubProject) => !p.name.includes("test") && p.description,
-          ),
-        );
-      } catch (error) {
-        console.error("Error fetching projects:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProjects();
-  }, []);
-
+export default function ProjectsSection({ isLightMode }: ProjectsSectionProps) {
   return (
-    <section className="max-w-7xl mx-auto px-4 py-20 border-t border-slate-800">
+    <section
+      className={`max-w-7xl mx-auto px-4 py-20 border-t ${
+        isLightMode ? "border-slate-200" : "border-white/10"
+      }`}
+    >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -76,10 +49,14 @@ export default function ProjectsSection() {
         viewport={{ once: true }}
         className="mb-12"
       >
-        <h2 className="text-4xl font-bold text-white mb-2">
+        <h2
+          className={`section-title mb-2 ${isLightMode ? "text-slate-900" : ""}`}
+        >
           Featured Projects
         </h2>
-        <p className="text-gray-400">
+        <p
+          className={`section-subtitle ${isLightMode ? "text-slate-600" : ""}`}
+        >
           Highlight of my work and recent developments
         </p>
       </motion.div>
@@ -98,21 +75,31 @@ export default function ProjectsSection() {
             viewport={{ once: true }}
             className="group cursor-pointer"
           >
-            <div className="relative overflow-hidden rounded-xl border border-blue-500/30 hover:border-blue-400/60 transition-colors h-full bg-slate-900/40">
+            <div
+              className={`relative overflow-hidden rounded-2xl hover:border-blue-300/40 transition-colors h-full backdrop-blur-xl ${
+                isLightMode
+                  ? "border border-slate-200 bg-white shadow-md"
+                  : "border border-white/10 bg-white/5"
+              }`}
+            >
               <div className="relative h-48 overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
               </div>
 
               <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                <h3
+                  className={`text-xl font-bold mb-2 group-hover:text-blue-300 transition-colors ${
+                    isLightMode ? "text-slate-900" : "text-white"
+                  }`}
+                >
                   {project.title}
                 </h3>
-                <p className="text-gray-300 text-sm mb-4">
+                <p className="text-slate-300 text-sm mb-4">
                   {project.description}
                 </p>
 
@@ -120,14 +107,14 @@ export default function ProjectsSection() {
                   {project.technologies.map((tech, techIdx) => (
                     <span
                       key={techIdx}
-                      className="px-3 py-1 bg-blue-500/20 border border-blue-400/30 rounded-full text-xs text-blue-300"
+                      className="px-3 py-1 bg-blue-500/15 border border-blue-300/30 rounded-full text-xs text-blue-200"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex items-center gap-2 text-blue-400 group-hover:text-blue-300 transition-colors">
+                <div className="flex items-center gap-2 text-blue-300 group-hover:text-cyan-200 transition-colors">
                   <span>View Project</span>
                   <ExternalLink size={16} />
                 </div>
@@ -148,7 +135,7 @@ export default function ProjectsSection() {
           href="https://github.com/tiagofc25"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors"
+          className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-400 hover:to-cyan-400 text-black font-bold py-3 px-8 rounded-xl transition-colors shadow-lg shadow-blue-500/25"
         >
           <Github size={20} />
           View All Projects on GitHub

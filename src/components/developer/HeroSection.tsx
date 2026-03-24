@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
-import { Code2, Github, Linkedin, Mail } from "lucide-react";
+import { Code2, Github, Mail } from "lucide-react";
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  isLightMode: boolean;
+}
+
+export default function HeroSection({ isLightMode }: HeroSectionProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -25,9 +29,9 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-4">
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-blob"></div>
-        <div className="absolute bottom-20 right-10 w-72 h-72 bg-blue-600/10 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
-        <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-blue-400/5 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/15 rounded-full blur-3xl animate-blob"></div>
+        <div className="absolute bottom-20 right-10 w-72 h-72 bg-blue-600/15 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
+        <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-cyan-400/10 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
       </div>
 
       <motion.div
@@ -41,8 +45,8 @@ export default function HeroSection() {
             variants={itemVariants}
             className="md:col-span-2 flex justify-center"
           >
-            <div className="relative w-48 h-48 md:w-56 md:h-56">
-              <div className="absolute inset-0 rounded-3xl overflow-hidden border-2 border-blue-500/50 group">
+            <div className="relative w-52 h-52 md:w-60 md:h-60">
+              <div className="absolute inset-0 rounded-3xl overflow-hidden border border-blue-400/40 glass-panel group neon-blue">
                 <img
                   src="/avatar.png"
                   alt="Tiago Fortes Coronel"
@@ -53,28 +57,45 @@ export default function HeroSection() {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 rounded-3xl border-2 border-transparent border-t-blue-400 border-r-blue-300"
+                className="absolute -inset-2 rounded-[1.8rem] border border-transparent border-t-blue-300/80 border-r-cyan-300/80"
               ></motion.div>
             </div>
           </motion.div>
 
           <motion.div variants={itemVariants} className="md:col-span-3">
             <div className="mb-6">
-              <h1 className="text-5xl md:text-6xl font-black text-white mb-2">
+              <p className="mb-4 inline-flex items-center rounded-full border border-blue-300/30 bg-blue-500/10 px-4 py-1 text-xs uppercase tracking-[0.15em] text-blue-200">
+                Available for new opportunities
+              </p>
+              <h1
+                className={`text-5xl md:text-6xl font-black mb-2 ${
+                  isLightMode ? "text-slate-900" : "text-white"
+                }`}
+              >
                 Tiago
               </h1>
-              <h2 className="text-3xl md:text-4xl font-bold text-blue-400">
+              <h2
+                className={`text-3xl md:text-4xl font-bold text-blue-400 ${
+                  isLightMode ? "" : "text-shimmer"
+                }`}
+              >
                 Fortes Coronel
               </h2>
             </div>
 
-            <p className="text-xl text-gray-300 mb-2">Full-Stack Developer</p>
-            <p className="text-gray-400 mb-6">
+            <p
+              className={`text-xl mb-2 ${
+                isLightMode ? "text-slate-800" : "text-slate-200"
+              }`}
+            >
+              Full-Stack Developer
+            </p>
+            <p className="text-slate-300 mb-6 max-w-2xl">
               Building modern web applications with Next.js, React, and
               TypeScript
             </p>
 
-            <div className="space-y-3 mb-8 text-sm text-gray-300">
+            <div className="space-y-3 mb-8 text-sm text-slate-300">
               <p>
                 <span className="font-semibold text-blue-400">📍</span>{" "}
                 Houilles, France
@@ -96,7 +117,7 @@ export default function HeroSection() {
                 href="https://github.com/tiagofc25"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-lg bg-blue-600/20 border border-blue-500/50 flex items-center justify-center text-blue-400 hover:text-blue-300 hover:border-blue-400 transition-colors"
+                className="w-12 h-12 rounded-xl bg-blue-600/15 border border-blue-400/40 flex items-center justify-center text-blue-300 hover:text-blue-200 hover:border-blue-300 transition-colors"
               >
                 <Github size={24} />
               </motion.a>
@@ -104,7 +125,7 @@ export default function HeroSection() {
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 href="mailto:tiagofortescoronel@gmail.com"
-                className="w-12 h-12 rounded-lg bg-blue-600/20 border border-blue-500/50 flex items-center justify-center text-blue-400 hover:text-blue-300 hover:border-blue-400 transition-colors"
+                className="w-12 h-12 rounded-xl bg-blue-600/15 border border-blue-400/40 flex items-center justify-center text-blue-300 hover:text-blue-200 hover:border-blue-300 transition-colors"
               >
                 <Mail size={24} />
               </motion.a>
@@ -113,7 +134,7 @@ export default function HeroSection() {
             <motion.button
               whileHover={{ scale: 1.05, x: 5 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-400 hover:to-cyan-400 text-black font-bold py-3 px-8 rounded-xl transition-colors shadow-lg shadow-blue-500/25"
             >
               <Code2 size={20} />
               View My Work

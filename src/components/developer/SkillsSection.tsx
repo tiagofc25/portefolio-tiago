@@ -38,7 +38,11 @@ const skillCategories = [
   },
 ];
 
-export default function SkillsSection() {
+interface SkillsSectionProps {
+  isLightMode: boolean;
+}
+
+export default function SkillsSection({ isLightMode }: SkillsSectionProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -59,7 +63,11 @@ export default function SkillsSection() {
   };
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-20 border-t border-slate-800">
+    <section
+      className={`max-w-7xl mx-auto px-4 py-20 border-t ${
+        isLightMode ? "border-slate-200" : "border-white/10"
+      }`}
+    >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -67,10 +75,16 @@ export default function SkillsSection() {
         viewport={{ once: true }}
         className="mb-12"
       >
-        <h2 className="text-4xl font-bold text-white mb-2">
+        <h2
+          className={`mb-2 section-title ${isLightMode ? "text-slate-900" : ""}`}
+        >
           Skills & Expertise
         </h2>
-        <p className="text-gray-400">Technologies and tools I work with</p>
+        <p
+          className={`section-subtitle ${isLightMode ? "text-slate-600" : ""}`}
+        >
+          Technologies and tools I work with
+        </p>
       </motion.div>
 
       <motion.div
@@ -85,7 +99,7 @@ export default function SkillsSection() {
             key={idx}
             variants={itemVariants}
             whileHover={{ translateY: -5 }}
-            className="bg-gradient-to-br from-blue-900/20 to-slate-900/20 border border-blue-500/30 rounded-xl p-6 hover:border-blue-400/60 transition-colors"
+            className="glass-panel rounded-2xl p-6 hover:border-blue-300/40 transition-colors"
           >
             <h3 className="text-lg font-bold text-blue-400 mb-4">
               {category.title}
@@ -100,8 +114,14 @@ export default function SkillsSection() {
                   viewport={{ once: true }}
                   className="relative"
                 >
-                  <div className="h-8 bg-blue-500/10 rounded-lg flex items-center px-3 border border-blue-400/30">
-                    <span className="text-sm text-gray-200">{skill}</span>
+                  <div className="h-8 bg-blue-500/10 rounded-lg flex items-center px-3 border border-blue-300/30">
+                    <span
+                      className={`text-sm ${
+                        isLightMode ? "text-slate-700" : "text-slate-100"
+                      }`}
+                    >
+                      {skill}
+                    </span>
                   </div>
                 </motion.div>
               ))}
@@ -133,13 +153,19 @@ export default function SkillsSection() {
           <motion.div
             key={idx}
             whileHover={{ scale: 1.05 }}
-            className="text-center p-6 bg-gradient-to-br from-blue-900/20 to-slate-900/20 border border-blue-500/30 rounded-xl"
+            className="text-center p-6 glass-panel rounded-2xl neon-blue"
           >
             <div className="text-4xl font-black text-blue-400 mb-2">
               {stat.value}
             </div>
-            <p className="text-white font-semibold mb-1">{stat.label}</p>
-            <p className="text-gray-400 text-sm">{stat.desc}</p>
+            <p
+              className={`font-semibold mb-1 ${
+                isLightMode ? "text-slate-900" : "text-white"
+              }`}
+            >
+              {stat.label}
+            </p>
+            <p className="text-slate-300 text-sm">{stat.desc}</p>
           </motion.div>
         ))}
       </motion.div>

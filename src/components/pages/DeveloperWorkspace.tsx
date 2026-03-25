@@ -1,6 +1,14 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Github, Mail, Phone, MapPin, Download } from "lucide-react";
+import {
+  ArrowLeft,
+  Github,
+  Mail,
+  Phone,
+  MapPin,
+  Download,
+  Linkedin,
+} from "lucide-react";
 import { useState, useEffect } from "react";
 import HeroSection from "../developer/HeroSection";
 import SkillsSection from "../developer/SkillsSection";
@@ -8,6 +16,7 @@ import ProjectsSection from "../developer/ProjectsSection";
 import ExperienceSection from "../developer/ExperienceSection";
 import ParticleConstellationBackground from "../common/ParticleConstellationBackground";
 import ThemeSwitch from "../common/ThemeSwitch";
+import LanguageHoverSwitch from "../common/LanguageHoverSwitch";
 
 interface DeveloperWorkspaceProps {
   isLightMode: boolean;
@@ -78,16 +87,11 @@ export default function DeveloperWorkspace({
             {isEnglish ? "Developer Portfolio" : "Portfolio Développeur"}
           </h1>
           <div className="flex items-center gap-6">
-            <button
-              onClick={onToggleLanguage}
-              className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors ${
-                isLightMode
-                  ? "border-slate-300 bg-white text-slate-800 hover:bg-slate-100"
-                  : "border-white/20 bg-white/10 text-slate-200 hover:bg-white/15"
-              }`}
-            >
-              {isEnglish ? "FR" : "EN"}
-            </button>
+            <LanguageHoverSwitch
+              isEnglish={isEnglish}
+              isLightMode={isLightMode}
+              onToggleLanguage={onToggleLanguage}
+            />
             <ThemeSwitch
               checked={isLightMode}
               onChange={onToggleTheme}
@@ -172,7 +176,17 @@ export default function DeveloperWorkspace({
                     {isEnglish ? "GitHub Profile" : "Profil GitHub"}
                   </a>
                   <a
-                    href="#"
+                    href="https://www.linkedin.com/in/tiago-fortes-coronel-a48399244/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-slate-300 hover:text-blue-300 transition-colors"
+                  >
+                    <Linkedin size={18} />
+                    LinkedIn
+                  </a>
+                  <a
+                    href="/CV-Tiago-Pro.pdf"
+                    download
                     className="flex items-center gap-2 text-slate-300 hover:text-blue-300 transition-colors"
                   >
                     <Download size={18} />

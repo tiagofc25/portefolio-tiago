@@ -4,36 +4,49 @@ const skillCategories = [
   {
     title: "Frontend",
     skills: [
-      "NextJS",
-      "React",
-      "TypeScript",
-      "JavaScript",
-      "HTML",
-      "CSS/Tailwind",
+      { name: "NextJS", level: 90 },
+      { name: "React", level: 92 },
+      { name: "Angular", level: 78 },
+      { name: "Vite", level: 85 },
+      { name: "TypeScript", level: 88 },
+      { name: "JavaScript", level: 90 },
+      { name: "HTML", level: 95 },
+      { name: "CSS/Tailwind", level: 92 },
     ],
   },
   {
     title: "Backend",
-    skills: ["PHP", "Symfony", "C#", "XAML", "SQL"],
+    skills: [
+      { name: "Supabase", level: 100 },
+      { name: "NestJS", level: 82 },
+      { name: "Go", level: 78 },
+      { name: "PHP", level: 80 },
+      { name: "Symfony", level: 80 },
+      { name: "C#", level: 74 },
+      { name: "XAML", level: 62 },
+      { name: "SQL", level: 84 },
+      { name: "API REST", level: 90 },
+    ],
   },
   {
     title: "Outils & plateformes",
     skills: [
-      "Git/GitHub",
-      "Bitbucket",
-      "Jira/Trello",
-      "Agile",
-      "O365 Admin",
-      "Shopify",
+      { name: "Bitbucket/GitHub/GitLab", level: 90 },
+      { name: "Git", level: 78 },
+      { name: "Confluence", level: 82 },
+      { name: "Jira/Trello", level: 88 },
+      { name: "Agile", level: 86 },
+      { name: "O365 Admin", level: 80 },
+      { name: "Shopify", level: 72 },
     ],
   },
   {
     title: "Design",
     skills: [
-      "Tailwind CSS",
-      "Adobe Photoshop",
-      "Adobe Illustrator",
-      "FL Studio",
+      { name: "Tailwind CSS", level: 90 },
+      { name: "Adobe Photoshop", level: 76 },
+      { name: "Adobe Illustrator", level: 70 },
+      { name: "FL Studio", level: 100 },
     ],
   },
 ];
@@ -110,26 +123,40 @@ export default function SkillsSection({
             <h3 className="text-lg font-bold text-blue-400 mb-4">
               {category.title}
             </h3>
-            <div className="space-y-2">
+            <div className="space-y-4">
               {category.skills.map((skill, skillIdx) => (
-                <motion.div
-                  key={skillIdx}
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "100%" }}
-                  transition={{ duration: 0.6, delay: skillIdx * 0.1 }}
-                  viewport={{ once: true }}
-                  className="relative"
-                >
-                  <div className="h-8 bg-blue-500/10 rounded-lg flex items-center px-3 border border-blue-300/30">
+                <div key={skillIdx} className="w-full">
+                  <div className="mb-1 flex items-center justify-between">
                     <span
-                      className={`text-sm ${
-                        isLightMode ? "text-slate-700" : "text-slate-100"
+                      className={`text-sm font-semibold ${
+                        isLightMode ? "text-slate-800" : "text-slate-100"
                       }`}
                     >
-                      {skill}
+                      {skill.name}
+                    </span>
+                    <span
+                      className={`text-xs font-medium ${
+                        isLightMode ? "text-slate-600" : "text-slate-300"
+                      }`}
+                    >
+                      {skill.level}%
                     </span>
                   </div>
-                </motion.div>
+
+                  <div
+                    className={`relative h-2.5 w-full rounded-md ${
+                      isLightMode ? "bg-slate-200" : "bg-white/10"
+                    }`}
+                  >
+                    <motion.span
+                      initial={{ width: 0, opacity: 0 }}
+                      whileInView={{ width: `${skill.level}%`, opacity: 1 }}
+                      transition={{ duration: 0.5, delay: skillIdx * 0.08 }}
+                      viewport={{ once: true }}
+                      className="absolute left-0 top-0 block h-full rounded-md bg-blue-500"
+                    />
+                  </div>
+                </div>
               ))}
             </div>
           </motion.div>

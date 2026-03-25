@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Code2, Github, Mail } from "lucide-react";
+import { Code2, Github, Linkedin, Mail } from "lucide-react";
 
 interface HeroSectionProps {
   isLightMode: boolean;
@@ -63,11 +63,11 @@ export default function HeroSection({
 
           <motion.div variants={itemVariants} className="md:col-span-3">
             <div className="mb-6">
-              <p className="mb-4 inline-flex items-center rounded-full border border-blue-300/30 bg-blue-500/10 px-4 py-1 text-xs uppercase tracking-[0.15em] text-blue-200">
+              {/* <p className="mb-4 inline-flex items-center rounded-full border border-blue-300/30 bg-blue-500/10 px-4 py-1 text-xs uppercase tracking-[0.15em] text-blue-200">
                 {isEnglish
                   ? "Available for new opportunities"
                   : "Disponible pour de nouvelles opportunités"}
-              </p>
+              </p> */}
               <h1
                 className={`text-5xl md:text-6xl font-black mb-2 ${
                   isLightMode ? "text-slate-900" : "text-white"
@@ -93,26 +93,21 @@ export default function HeroSection({
             </p>
             <p className="text-slate-300 mb-6 max-w-2xl">
               {isEnglish
-                ? "Building modern web applications with Next.js, React, and TypeScript"
-                : "Je crée des applications web modernes avec Next.js, React et TypeScript"}
+                ? "Currently pursuing a Master CTO Tech Lead at HETIC and working as a web developer at SWISH, I am first and foremost a passionate coder. My daily life revolves around a modern and comprehensive stack: JavaScript, React, Next.js, Angular, Typescript, Vite, Go, and Nest. Highly autonomous, I have also had the opportunity to successfully coordinate several technical projects. With a remarkable sense of interpersonal skills, I enjoy combining my expertise as a developer with excellent communication to design high-performance applications and collaborate effectively in teams."
+                : "Actuellement en Master CTO Tech Lead à HETIC et développeur web chez SWISH, je suis avant tout un passionné de code. Mon quotidien s'articule autour d'une stack moderne et complète : JavaScript, React, Next.js, Angular, Typescript, Vite, Go et Nest. Très autonome, j'ai également eu l'occasion de coordonner quelques projets techniques avec succès. Fort d'un sens du relationnel remarquable, j'aime allier mon expertise de développeur à une excellente communication pour concevoir des applications performantes et collaborer efficacement en équipe."}
             </p>
 
             <div className="space-y-3 mb-8 text-sm text-slate-300">
+              <p>Paris, France</p>
               <p>
-                <span className="font-semibold text-blue-400">📍</span>{" "}
-                Houilles, France
-              </p>
-              <p>
-                <span className="font-semibold text-blue-400">🏢</span>{" "}
                 {isEnglish
                   ? "Developer at SWISH (Since Sept 2024)"
                   : "Développeur chez SWISH (depuis sept. 2024)"}
               </p>
               <p>
-                <span className="font-semibold text-blue-400">🎓</span>
                 {isEnglish
-                  ? "Bachelor in Application Development (CESI)"
-                  : "Bachelor Concepteur d'Applications (CESI)"}
+                  ? "Master CTO Techlead ( HETIC )"
+                  : "Mastère CTO Techlead ( HETIC )"}
               </p>
             </div>
 
@@ -134,6 +129,16 @@ export default function HeroSection({
                 className="w-12 h-12 rounded-xl bg-blue-600/15 border border-blue-400/40 flex items-center justify-center text-blue-300 hover:text-blue-200 hover:border-blue-300 transition-colors"
               >
                 <Mail size={24} />
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                href="https://www.linkedin.com/in/tiago-fortes-coronel-a48399244/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-xl bg-blue-600/15 border border-blue-400/40 flex items-center justify-center text-blue-300 hover:text-blue-200 hover:border-blue-300 transition-colors"
+              >
+                <Linkedin size={24} />
               </motion.a>
             </div>
 

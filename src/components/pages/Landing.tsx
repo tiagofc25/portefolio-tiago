@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Code2, Music } from "lucide-react";
 import ParticleConstellationBackground from "../common/ParticleConstellationBackground";
 import ThemeSwitch from "../common/ThemeSwitch";
+import LanguageHoverSwitch from "../common/LanguageHoverSwitch";
 
 interface LandingProps {
   onWorkspaceSelect: (workspace: "dev" | "beat") => void;
@@ -58,16 +59,11 @@ export default function Landing({
       </div>
 
       <div className="absolute right-6 top-6 z-20 flex items-center gap-6">
-        <button
-          onClick={onToggleLanguage}
-          className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
-            isLightMode
-              ? "border-slate-300 bg-white text-slate-800 hover:bg-slate-100"
-              : "border-white/20 bg-white/10 text-slate-200 hover:bg-white/15"
-          }`}
-        >
-          {isEnglish ? "FR" : "EN"}
-        </button>
+        <LanguageHoverSwitch
+          isEnglish={isEnglish}
+          isLightMode={isLightMode}
+          onToggleLanguage={onToggleLanguage}
+        />
         <ThemeSwitch
           checked={isLightMode}
           onChange={onToggleTheme}

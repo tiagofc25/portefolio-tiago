@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import BeatmakerHeroSection from "../beatmaker/HeroSection";
 import ParticleConstellationBackground from "../common/ParticleConstellationBackground";
 import ThemeSwitch from "../common/ThemeSwitch";
+import LanguageHoverSwitch from "../common/LanguageHoverSwitch";
 
 interface BeatmakerWorkspaceProps {
   isLightMode: boolean;
@@ -87,16 +88,11 @@ export default function BeatmakerWorkspace({
             {isEnglish ? "Beatmaker Portfolio" : "Portfolio Beatmaker"}
           </h1>
           <div className="flex items-center gap-6">
-            <button
-              onClick={onToggleLanguage}
-              className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors ${
-                isLightMode
-                  ? "border-slate-300 bg-white text-slate-800 hover:bg-slate-100"
-                  : "border-white/20 bg-white/10 text-slate-200 hover:bg-white/15"
-              }`}
-            >
-              {isEnglish ? "FR" : "EN"}
-            </button>
+            <LanguageHoverSwitch
+              isEnglish={isEnglish}
+              isLightMode={isLightMode}
+              onToggleLanguage={onToggleLanguage}
+            />
             <ThemeSwitch
               checked={isLightMode}
               onChange={onToggleTheme}

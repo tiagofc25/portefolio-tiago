@@ -53,13 +53,6 @@ export default function BeatmakerHeroSection({
           >
             <div className="relative">
               <motion.div
-                animate={{ rotate: 360, scale: [1, 1.1, 1] }}
-                transition={{ duration: 4, repeat: Infinity }}
-                className="w-24 h-24 drop-shadow-[0_0_30px_rgba(251,146,60,0.5)]"
-              >
-                <Music className="w-full h-full text-orange-400" />
-              </motion.div>
-              <motion.div
                 animate={{ scale: [1, 1.5, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
                 className="absolute inset-0 rounded-full border-2 border-orange-400/30"

@@ -31,7 +31,7 @@ const featuredProjects = [
     githubLink: "https://github.com/tiagofc25/Portefolio-Anne",
   },
   {
-    title: "Beat Store - Space Chico",
+    title: "Beat Store -  Spacechico",
     description:
       "Site e-commerce où un beatmaker catalogue ses instrumentales, l'utilisateur peut rechercher, ajouter au panier, puis envoyer une demande par mail. Le beatmaker accepte/refuse et les fichiers sont envoyés par e-mail, avec dashboard de gestion.",
     technologies: [
@@ -43,7 +43,7 @@ const featuredProjects = [
     ],
     image:
       "https://images.pexels.com/photos/164938/pexels-photo-164938.jpeg?auto=compress&cs=tinysrgb&w=600",
-    liveLink: "https://spacechico-winnit.online/",
+    liveLink: "https:// Spacechico-winnit.online/",
     githubLink: "https://github.com/tiagofc25/beat-store",
   },
   {

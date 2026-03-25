@@ -212,8 +212,8 @@ export default function Landing({
                   }`}
                 >
                   {isEnglish
-                    ? "Producer • Space Chico"
-                    : "Producteur • Space Chico"}
+                    ? "Producer • Spacechico"
+                    : "Producteur • Spacechico"}
                 </p>
               </div>
 

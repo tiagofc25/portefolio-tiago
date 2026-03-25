@@ -68,7 +68,13 @@ export default function BeatmakerHeroSection({
           </motion.div>
 
           <motion.div variants={itemVariants}>
-            <p className="inline-flex mb-4 items-center rounded-full border border-orange-300/30 bg-orange-500/10 px-4 py-1 text-xs uppercase tracking-[0.15em] text-orange-200">
+            <p
+              className={`inline-flex mb-4 items-center rounded-full border px-4 py-1 text-xs uppercase tracking-[0.15em] ${
+                isLightMode
+                  ? "border-orange-300/60 bg-orange-500/15 text-orange-700"
+                  : "border-orange-300/30 bg-orange-500/10 text-orange-200"
+              }`}
+            >
               {isEnglish ? "Producer Brand" : "Univers producteur"}
             </p>
             <h1
@@ -76,7 +82,7 @@ export default function BeatmakerHeroSection({
                 isLightMode ? "text-slate-900" : "text-white text-shimmer"
               }`}
             >
-              Space Chico
+              Spacechico
             </h1>
             <p className="text-2xl md:text-3xl text-orange-400 mb-4">
               {isEnglish ? "Beat Producer" : "Beatmaker"}
@@ -91,7 +97,7 @@ export default function BeatmakerHeroSection({
           >
             {isEnglish
               ? "Crafting high-quality beats across Hip-Hop, Trap, and Electronic genres. Each production is designed with precision and creativity."
-              : "Je produis des beats de haute qualité en Hip-Hop, Trap et électro. Chaque production est conçue avec précision et créativité."}
+              : "Je produis des beats de haute qualité. Chaque production est conçue avec précision et créativité."}
           </motion.p>
 
           <motion.div
@@ -99,21 +105,40 @@ export default function BeatmakerHeroSection({
             className="flex flex-wrap justify-center gap-4 mb-12"
           >
             {[
-              { label: "Hip-Hop", icon: Music },
-              { label: "Trap", icon: Volume2 },
-              { label: "Electronic", icon: Headphones },
-            ].map((genre, idx) => (
-              <motion.div
-                key={idx}
-                whileHover={{ scale: 1.1, y: -2 }}
-                className="px-6 py-3 bg-orange-600/15 border border-orange-300/35 rounded-full text-orange-200 font-semibold text-sm hover:border-orange-200 transition-colors"
-              >
-                <div className="flex items-center gap-2">
-                  <genre.icon size={18} />
-                  {genre.label}
-                </div>
-              </motion.div>
-            ))}
+              "Trap",
+              "R&B",
+              "Pop",
+              "Drill",
+              "Afrobeat",
+              "Amapiano",
+              "Jersey",
+              "Dancehall",
+              "Electronic",
+              "Afro-House",
+              "House",
+              "Hood Trap",
+              "Club",
+              "SPECIAL",
+            ].map((genre, idx) => {
+              const GenreIcon = [Music, Volume2, Headphones][idx % 3];
+
+              return (
+                <motion.div
+                  key={idx}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  className={`px-6 py-3 rounded-full font-semibold text-sm transition-colors ${
+                    isLightMode
+                      ? "bg-orange-500/15 border border-orange-400/40 text-orange-700 hover:border-orange-500"
+                      : "bg-orange-600/15 border border-orange-300/35 text-orange-200 hover:border-orange-200"
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <GenreIcon size={18} />
+                    {genre}
+                  </div>
+                </motion.div>
+              );
+            })}
           </motion.div>
 
           <motion.div
@@ -122,7 +147,7 @@ export default function BeatmakerHeroSection({
           >
             {[
               {
-                value: "100+",
+                value: "500+",
                 label: isEnglish ? "Beats Produced" : "Beats produits",
               },
               {
@@ -130,7 +155,7 @@ export default function BeatmakerHeroSection({
                 label: isEnglish ? "Years Experience" : "Années d'expérience",
               },
               {
-                value: "1000+",
+                value: "100+",
                 label: isEnglish ? "Satisfied Customers" : "Clients satisfaits",
               },
             ].map((stat, idx) => (
@@ -142,7 +167,11 @@ export default function BeatmakerHeroSection({
                 <div className="text-3xl font-black text-orange-400 mb-2">
                   {stat.value}
                 </div>
-                <p className="text-slate-300">{stat.label}</p>
+                <p
+                  className={isLightMode ? "text-slate-700" : "text-slate-300"}
+                >
+                  {stat.label}
+                </p>
               </motion.div>
             ))}
           </motion.div>

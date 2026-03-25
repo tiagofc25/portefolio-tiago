@@ -138,19 +138,31 @@ export default function DeveloperWorkspace({
                 <div className="space-y-3">
                   <a
                     href="mailto:tiagofortescoronel@gmail.com"
-                    className="flex items-center gap-2 text-slate-300 hover:text-blue-300 transition-colors"
+                    className={`flex items-center gap-2 transition-colors ${
+                      isLightMode
+                        ? "text-slate-700 hover:text-blue-700"
+                        : "text-slate-300 hover:text-blue-300"
+                    }`}
                   >
                     <Mail size={18} />
                     tiagofortescoronel@gmail.com
                   </a>
                   <a
                     href="tel:+33787124803"
-                    className="flex items-center gap-2 text-slate-300 hover:text-blue-300 transition-colors"
+                    className={`flex items-center gap-2 transition-colors ${
+                      isLightMode
+                        ? "text-slate-700 hover:text-blue-700"
+                        : "text-slate-300 hover:text-blue-300"
+                    }`}
                   >
                     <Phone size={18} />
                     +33 7 87 12 48 03
                   </a>
-                  <div className="flex items-center gap-2 text-slate-300">
+                  <div
+                    className={`flex items-center gap-2 ${
+                      isLightMode ? "text-slate-700" : "text-slate-300"
+                    }`}
+                  >
                     <MapPin size={18} />
                     Houilles, France
                   </div>
@@ -170,7 +182,11 @@ export default function DeveloperWorkspace({
                     href="https://github.com/tiagofc25"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-slate-300 hover:text-blue-300 transition-colors"
+                    className={`flex items-center gap-2 transition-colors ${
+                      isLightMode
+                        ? "text-slate-700 hover:text-blue-700"
+                        : "text-slate-300 hover:text-blue-300"
+                    }`}
                   >
                     <Github size={18} />
                     {isEnglish ? "GitHub Profile" : "Profil GitHub"}
@@ -179,7 +195,11 @@ export default function DeveloperWorkspace({
                     href="https://www.linkedin.com/in/tiago-fortes-coronel-a48399244/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-slate-300 hover:text-blue-300 transition-colors"
+                    className={`flex items-center gap-2 transition-colors ${
+                      isLightMode
+                        ? "text-slate-700 hover:text-blue-700"
+                        : "text-slate-300 hover:text-blue-300"
+                    }`}
                   >
                     <Linkedin size={18} />
                     LinkedIn
@@ -187,7 +207,11 @@ export default function DeveloperWorkspace({
                   <a
                     href="/CV-Tiago-Pro.pdf"
                     download
-                    className="flex items-center gap-2 text-slate-300 hover:text-blue-300 transition-colors"
+                    className={`flex items-center gap-2 transition-colors ${
+                      isLightMode
+                        ? "text-slate-700 hover:text-blue-700"
+                        : "text-slate-300 hover:text-blue-300"
+                    }`}
                   >
                     <Download size={18} />
                     {isEnglish ? "Download CV" : "Télécharger le CV"}
@@ -203,7 +227,11 @@ export default function DeveloperWorkspace({
                 >
                   {isEnglish ? "Languages" : "Langues"}
                 </h3>
-                <div className="space-y-2 text-slate-300 text-sm">
+                <div
+                  className={`space-y-2 text-sm ${
+                    isLightMode ? "text-slate-700" : "text-slate-300"
+                  }`}
+                >
                   <p>
                     {isEnglish ? "French (C2 native)" : "Français (C2 natif)"}
                   </p>
@@ -214,7 +242,13 @@ export default function DeveloperWorkspace({
               </div>
             </div>
 
-            <div className="border-t border-white/10 pt-8 text-center text-slate-400 text-sm">
+            <div
+              className={`border-t pt-8 text-center text-sm ${
+                isLightMode
+                  ? "border-slate-200 text-slate-600"
+                  : "border-white/10 text-slate-400"
+              }`}
+            >
               <p>
                 {isEnglish
                   ? "© 2025 Tiago Fortes Coronel. All rights reserved."

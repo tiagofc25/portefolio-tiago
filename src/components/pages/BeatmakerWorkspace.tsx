@@ -142,15 +142,19 @@ export default function BeatmakerWorkspace({
                   isLightMode ? "text-slate-900" : "text-white"
                 }`}
               >
-                Space Chico Beats
+                Spacechico Beats
               </h3>
-              <p className="text-slate-300 mb-6">
+              <p
+                className={`mb-6 ${
+                  isLightMode ? "text-slate-700" : "text-slate-300"
+                }`}
+              >
                 {isEnglish
                   ? "Visit my complete beats catalog and explore all my productions"
                   : "Visite mon catalogue complet de beats et découvre toutes mes productions"}
               </p>
               <a
-                href="https://spacechico-winnit.online/"
+                href="https:// Spacechico-winnit.online/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-xl transition-colors"
@@ -176,9 +180,13 @@ export default function BeatmakerWorkspace({
                 isLightMode ? "text-slate-900" : "text-white text-shimmer"
               }`}
             >
-              {isEnglish ? "About Space Chico" : "À propos de Space Chico"}
+              {isEnglish ? "About Spacechico" : "À propos de Spacechico"}
             </h2>
-            <p className="text-slate-300 max-w-2xl mx-auto mb-8">
+            <p
+              className={`max-w-2xl mx-auto mb-8 ${
+                isLightMode ? "text-slate-700" : "text-slate-300"
+              }`}
+            >
               {isEnglish
                 ? "Producer passionate about creating high-quality beats across multiple genres including Hip-Hop, Trap, and Electronic music. Each beat is crafted with attention to detail and designed for both professional and creative use."
                 : "Producteur passionné par la création de beats de haute qualité dans plusieurs styles, dont le Hip-Hop, la Trap et l’électro. Chaque beat est conçu avec attention au détail pour un usage professionnel et créatif."}
@@ -208,13 +216,17 @@ export default function BeatmakerWorkspace({
                 </h3>
                 <div className="space-y-3">
                   <a
-                    href="https://spacechico-winnit.online/"
+                    href="https:// Spacechico-winnit.online/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-slate-300 hover:text-orange-300 transition-colors"
+                    className={`flex items-center gap-2 transition-colors ${
+                      isLightMode
+                        ? "text-slate-700 hover:text-orange-600"
+                        : "text-slate-300 hover:text-orange-300"
+                    }`}
                   >
                     <Music size={18} />
-                    {isEnglish ? "Space Chico Website" : "Site Space Chico"}
+                    {isEnglish ? "Space Chico Website" : "Site Spacechico"}
                   </a>
                 </div>
               </div>
@@ -227,7 +239,11 @@ export default function BeatmakerWorkspace({
                 >
                   Contact
                 </h3>
-                <div className="space-y-2 text-slate-300 text-sm">
+                <div
+                  className={`space-y-2 text-sm ${
+                    isLightMode ? "text-slate-700" : "text-slate-300"
+                  }`}
+                >
                   <p>
                     {isEnglish
                       ? "For collaborations and inquiries"
@@ -235,18 +251,24 @@ export default function BeatmakerWorkspace({
                   </p>
                   <p>
                     {isEnglish
-                      ? "Email: tiagofortescoronel@gmail.com"
-                      : "E-mail : tiagofortescoronel@gmail.com"}
+                      ? "Email:  Spacechicowinnit@gmail.com"
+                      : "E-mail :  Spacechicowinnit@gmail.com"}
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="border-t border-white/10 pt-8 text-center text-slate-400 text-sm">
+            <div
+              className={`border-t pt-8 text-center text-sm ${
+                isLightMode
+                  ? "border-slate-200 text-slate-600"
+                  : "border-white/10 text-slate-400"
+              }`}
+            >
               <p>
                 {isEnglish
-                  ? "© 2025 Space Chico. All beats reserved."
-                  : "© 2025 Space Chico. Tous les beats réservés."}
+                  ? "© 2025 Spacechico. All beats reserved."
+                  : "© 2025 Spacechico. Tous les beats réservés."}
               </p>
             </div>
           </div>
@@ -291,7 +313,7 @@ export default function BeatmakerWorkspace({
               </div>
               <div className="flex items-center gap-2">
                 <a
-                  href="https://www.spacechico-winnit.online/"
+                  href="https://www. Spacechico-winnit.online/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`hidden md:inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm transition-colors ${
@@ -329,9 +351,9 @@ export default function BeatmakerWorkspace({
               }`}
             >
               <iframe
-                src="https://www.spacechico-winnit.online/"
+                src="https://www. Spacechico-winnit.online/"
                 title={
-                  isEnglish ? "Space Chico Catalog" : "Catalogue Space Chico"
+                  isEnglish ? "Space Chico Catalog" : "Catalogue Spacechico"
                 }
                 className="h-full w-full"
                 loading="lazy"

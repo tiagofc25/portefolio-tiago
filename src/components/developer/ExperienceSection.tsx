@@ -12,7 +12,7 @@ const timeline = [
     },
     work: {
       company: "Apagor / Class'croute",
-      title: "IT Technician ",
+      title: "Technicien informatique",
       location: "Nanterre",
       description: [
         "Support informatique au siège",
@@ -59,10 +59,12 @@ const timeline = [
 
 interface ExperienceSectionProps {
   isLightMode: boolean;
+  isEnglish: boolean;
 }
 
 export default function ExperienceSection({
   isLightMode,
+  isEnglish,
 }: ExperienceSectionProps) {
   return (
     <section
@@ -80,12 +82,14 @@ export default function ExperienceSection({
         <h2
           className={`section-title mb-2 ${isLightMode ? "text-slate-900" : ""}`}
         >
-          Experience & Education
+          {isEnglish ? "Experience & Education" : "Expérience & Formation"}
         </h2>
         <p
           className={`section-subtitle ${isLightMode ? "text-slate-600" : ""}`}
         >
-          Éducation à gauche, expérience professionnelle à droite
+          {isEnglish
+            ? "Education on the left, professional experience on the right"
+            : "Éducation à gauche, expérience professionnelle à droite"}
         </p>
       </motion.div>
 
@@ -219,27 +223,45 @@ export default function ExperienceSection({
         className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6"
       >
         <div className="glass-panel rounded-2xl p-6">
-          <h3 className="text-lg font-bold text-blue-400 mb-4">Soft Skills</h3>
+          <h3 className="text-lg font-bold text-blue-400 mb-4">
+            {isEnglish ? "Soft Skills" : "Compétences humaines"}
+          </h3>
           <ul className="space-y-2 text-slate-300 text-sm">
-            <li>✓ Resilient and adaptable</li>
-            <li>✓ Team collaboration</li>
-            <li>✓ Autonomous working</li>
-            <li>✓ Analytical mindset</li>
-            <li>✓ Flexible approach</li>
-            <li>✓ Strong interpersonal skills</li>
+            <li>
+              {isEnglish
+                ? "✓ Resilient and adaptable"
+                : "✓ Résilient et adaptable"}
+            </li>
+            <li>{isEnglish ? "✓ Team collaboration" : "✓ Esprit d'équipe"}</li>
+            <li>
+              {isEnglish ? "✓ Autonomous working" : "✓ Travail en autonomie"}
+            </li>
+            <li>
+              {isEnglish ? "✓ Analytical mindset" : "✓ Esprit analytique"}
+            </li>
+            <li>{isEnglish ? "✓ Flexible approach" : "✓ Approche flexible"}</li>
+            <li>
+              {isEnglish
+                ? "✓ Strong interpersonal skills"
+                : "✓ Excellentes qualités relationnelles"}
+            </li>
           </ul>
         </div>
 
         <div className="glass-panel rounded-2xl p-6">
           <h3 className="text-lg font-bold text-blue-400 mb-4">
-            Hobbies & Interests
+            {isEnglish ? "Hobbies & Interests" : "Loisirs & centres d'intérêt"}
           </h3>
           <ul className="space-y-2 text-slate-300 text-sm">
             <li>⚽ Football</li>
             <li>🎵 Beatmaking</li>
             <li>🥋 Brazilian Jujitsu</li>
-            <li>💻 Web Development</li>
-            <li>🎮 Game Development (CS50 certified)</li>
+            <li>{isEnglish ? "💻 Web Development" : "💻 Développement web"}</li>
+            <li>
+              {isEnglish
+                ? "🎮 Game Development (CS50 certified)"
+                : "🎮 Développement de jeux (certifié CS50)"}
+            </li>
           </ul>
         </div>
       </motion.div>

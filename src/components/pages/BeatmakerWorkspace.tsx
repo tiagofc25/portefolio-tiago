@@ -1,18 +1,23 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Music, ExternalLink, X, Moon, Sun } from "lucide-react";
+import { ArrowLeft, Music, ExternalLink, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import BeatmakerHeroSection from "../beatmaker/HeroSection";
 import ParticleConstellationBackground from "../common/ParticleConstellationBackground";
+import ThemeSwitch from "../common/ThemeSwitch";
 
 interface BeatmakerWorkspaceProps {
   isLightMode: boolean;
   onToggleTheme: () => void;
+  isEnglish: boolean;
+  onToggleLanguage: () => void;
 }
 
 export default function BeatmakerWorkspace({
   isLightMode,
   onToggleTheme,
+  isEnglish,
+  onToggleLanguage,
 }: BeatmakerWorkspaceProps) {
   const navigate = useNavigate();
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
@@ -72,26 +77,36 @@ export default function BeatmakerWorkspace({
             }`}
           >
             <ArrowLeft size={20} />
-            <span>Back</span>
+            <span>{isEnglish ? "Back" : "Retour"}</span>
           </motion.button>
           <h1
             className={`text-xl font-bold ${
               isLightMode ? "text-slate-900" : "text-white"
             }`}
           >
-            Beatmaker Portfolio
+            {isEnglish ? "Beatmaker Portfolio" : "Portfolio Beatmaker"}
           </h1>
-          <button
-            onClick={onToggleTheme}
-            className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors ${
-              isLightMode
-                ? "border-slate-300 bg-white text-slate-800 hover:bg-slate-100"
-                : "border-white/20 bg-white/10 text-slate-200 hover:bg-white/15"
-            }`}
-          >
-            {isLightMode ? <Moon size={14} /> : <Sun size={14} />}
-            {isLightMode ? "Dark" : "White"}
-          </button>
+          <div className="flex items-center gap-6">
+            <button
+              onClick={onToggleLanguage}
+              className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors ${
+                isLightMode
+                  ? "border-slate-300 bg-white text-slate-800 hover:bg-slate-100"
+                  : "border-white/20 bg-white/10 text-slate-200 hover:bg-white/15"
+              }`}
+            >
+              {isEnglish ? "FR" : "EN"}
+            </button>
+            <ThemeSwitch
+              checked={isLightMode}
+              onChange={onToggleTheme}
+              ariaLabel={
+                isEnglish
+                  ? "Toggle between light and dark mode"
+                  : "Basculer entre le mode clair et sombre"
+              }
+            />
+          </div>
         </div>
       </div>
 
@@ -99,6 +114,7 @@ export default function BeatmakerWorkspace({
         <BeatmakerHeroSection
           onExploreClick={() => setIsCatalogOpen(true)}
           isLightMode={isLightMode}
+          isEnglish={isEnglish}
         />
 
         <motion.section
@@ -108,9 +124,13 @@ export default function BeatmakerWorkspace({
           className="max-w-7xl mx-auto px-4 py-20"
         >
           <div className="text-center mb-12">
-            <h2 className="section-title mb-4">Full Catalog</h2>
+            <h2 className="section-title mb-4">
+              {isEnglish ? "Full Catalog" : "Catalogue complet"}
+            </h2>
             <p className="section-subtitle">
-              Explore all my beats on my dedicated platform
+              {isEnglish
+                ? "Explore all my beats on my dedicated platform"
+                : "Explore tous mes beats sur ma plateforme dédiée"}
             </p>
           </div>
 
@@ -129,7 +149,9 @@ export default function BeatmakerWorkspace({
                 Space Chico Beats
               </h3>
               <p className="text-slate-300 mb-6">
-                Visit my complete beats catalog and explore all my productions
+                {isEnglish
+                  ? "Visit my complete beats catalog and explore all my productions"
+                  : "Visite mon catalogue complet de beats et découvre toutes mes productions"}
               </p>
               <a
                 href="https://spacechico-winnit.online/"
@@ -137,7 +159,7 @@ export default function BeatmakerWorkspace({
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-xl transition-colors"
               >
-                Visit Catalog
+                {isEnglish ? "Visit Catalog" : "Voir le catalogue"}
                 <ExternalLink size={20} />
               </a>
             </div>
@@ -158,13 +180,12 @@ export default function BeatmakerWorkspace({
                 isLightMode ? "text-slate-900" : "text-white text-shimmer"
               }`}
             >
-              About Space Chico
+              {isEnglish ? "About Space Chico" : "À propos de Space Chico"}
             </h2>
             <p className="text-slate-300 max-w-2xl mx-auto mb-8">
-              Producer passionate about creating high-quality beats across
-              multiple genres including Hip-Hop, Trap, and Electronic music.
-              Each beat is crafted with attention to detail and designed for
-              both professional and creative use.
+              {isEnglish
+                ? "Producer passionate about creating high-quality beats across multiple genres including Hip-Hop, Trap, and Electronic music. Each beat is crafted with attention to detail and designed for both professional and creative use."
+                : "Producteur passionné par la création de beats de haute qualité dans plusieurs styles, dont le Hip-Hop, la Trap et l’électro. Chaque beat est conçu avec attention au détail pour un usage professionnel et créatif."}
             </p>
           </div>
         </motion.section>
@@ -187,7 +208,7 @@ export default function BeatmakerWorkspace({
                     isLightMode ? "text-slate-900" : "text-white"
                   }`}
                 >
-                  Social & Links
+                  {isEnglish ? "Social & Links" : "Réseaux & liens"}
                 </h3>
                 <div className="space-y-3">
                   <a
@@ -197,7 +218,7 @@ export default function BeatmakerWorkspace({
                     className="flex items-center gap-2 text-slate-300 hover:text-orange-300 transition-colors"
                   >
                     <Music size={18} />
-                    Space Chico Website
+                    {isEnglish ? "Space Chico Website" : "Site Space Chico"}
                   </a>
                 </div>
               </div>
@@ -211,14 +232,26 @@ export default function BeatmakerWorkspace({
                   Contact
                 </h3>
                 <div className="space-y-2 text-slate-300 text-sm">
-                  <p>For collaborations and inquiries</p>
-                  <p>Email: tiagofortescoronel@gmail.com</p>
+                  <p>
+                    {isEnglish
+                      ? "For collaborations and inquiries"
+                      : "Pour collaborations et demandes"}
+                  </p>
+                  <p>
+                    {isEnglish
+                      ? "Email: tiagofortescoronel@gmail.com"
+                      : "E-mail : tiagofortescoronel@gmail.com"}
+                  </p>
                 </div>
               </div>
             </div>
 
             <div className="border-t border-white/10 pt-8 text-center text-slate-400 text-sm">
-              <p>© 2025 Space Chico. All beats reserved.</p>
+              <p>
+                {isEnglish
+                  ? "© 2025 Space Chico. All beats reserved."
+                  : "© 2025 Space Chico. Tous les beats réservés."}
+              </p>
             </div>
           </div>
         </motion.footer>
@@ -257,7 +290,7 @@ export default function BeatmakerWorkspace({
                     isLightMode ? "text-slate-900" : "text-white"
                   }`}
                 >
-                  Explore All Beats
+                  {isEnglish ? "Explore All Beats" : "Explorer tous les beats"}
                 </h3>
               </div>
               <div className="flex items-center gap-2">
@@ -271,7 +304,9 @@ export default function BeatmakerWorkspace({
                       : "border-white/15 text-slate-200 hover:text-orange-200 hover:border-orange-300/40"
                   }`}
                 >
-                  Open in new tab
+                  {isEnglish
+                    ? "Open in new tab"
+                    : "Ouvrir dans un nouvel onglet"}
                   <ExternalLink size={16} />
                 </a>
                 <button
@@ -281,7 +316,11 @@ export default function BeatmakerWorkspace({
                       ? "border-slate-300 text-slate-700 hover:text-orange-600 hover:border-orange-300"
                       : "border-white/15 text-slate-200 hover:text-orange-200 hover:border-orange-300/40"
                   }`}
-                  aria-label="Close catalog popup"
+                  aria-label={
+                    isEnglish
+                      ? "Close catalog popup"
+                      : "Fermer la fenêtre du catalogue"
+                  }
                 >
                   <X size={18} />
                 </button>
@@ -295,7 +334,9 @@ export default function BeatmakerWorkspace({
             >
               <iframe
                 src="https://www.spacechico-winnit.online/"
-                title="Space Chico Catalog"
+                title={
+                  isEnglish ? "Space Chico Catalog" : "Catalogue Space Chico"
+                }
                 className="h-full w-full"
                 loading="lazy"
               />

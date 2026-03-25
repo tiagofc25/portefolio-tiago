@@ -4,11 +4,13 @@ import { Music, Volume2, Headphones } from "lucide-react";
 interface BeatmakerHeroSectionProps {
   onExploreClick: () => void;
   isLightMode: boolean;
+  isEnglish: boolean;
 }
 
 export default function BeatmakerHeroSection({
   onExploreClick,
   isLightMode,
+  isEnglish,
 }: BeatmakerHeroSectionProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -67,7 +69,7 @@ export default function BeatmakerHeroSection({
 
           <motion.div variants={itemVariants}>
             <p className="inline-flex mb-4 items-center rounded-full border border-orange-300/30 bg-orange-500/10 px-4 py-1 text-xs uppercase tracking-[0.15em] text-orange-200">
-              Producer Brand
+              {isEnglish ? "Producer Brand" : "Univers producteur"}
             </p>
             <h1
               className={`text-6xl md:text-7xl font-black mb-2 ${
@@ -77,7 +79,7 @@ export default function BeatmakerHeroSection({
               Space Chico
             </h1>
             <p className="text-2xl md:text-3xl text-orange-400 mb-4">
-              Beat Producer
+              {isEnglish ? "Beat Producer" : "Beatmaker"}
             </p>
           </motion.div>
 
@@ -87,8 +89,9 @@ export default function BeatmakerHeroSection({
               isLightMode ? "text-slate-700" : "text-slate-300"
             }`}
           >
-            Crafting high-quality beats across Hip-Hop, Trap, and Electronic
-            genres. Each production is designed with precision and creativity.
+            {isEnglish
+              ? "Crafting high-quality beats across Hip-Hop, Trap, and Electronic genres. Each production is designed with precision and creativity."
+              : "Je produis des beats de haute qualité en Hip-Hop, Trap et électro. Chaque production est conçue avec précision et créativité."}
           </motion.p>
 
           <motion.div
@@ -118,9 +121,18 @@ export default function BeatmakerHeroSection({
             className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
           >
             {[
-              { value: "100+", label: "Beats Produced" },
-              { value: "5+", label: "Years Experience" },
-              { value: "1000+", label: "Satisfied Customers" },
+              {
+                value: "100+",
+                label: isEnglish ? "Beats Produced" : "Beats produits",
+              },
+              {
+                value: "5+",
+                label: isEnglish ? "Years Experience" : "Années d'expérience",
+              },
+              {
+                value: "1000+",
+                label: isEnglish ? "Satisfied Customers" : "Clients satisfaits",
+              },
             ].map((stat, idx) => (
               <motion.div
                 key={idx}
@@ -143,7 +155,7 @@ export default function BeatmakerHeroSection({
             className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 text-black font-bold py-4 px-10 rounded-xl transition-colors text-lg shadow-lg shadow-orange-500/25"
           >
             <Headphones size={24} />
-            Explore All Beats
+            {isEnglish ? "Explore All Beats" : "Explorer tous les beats"}
           </motion.button>
         </div>
       </motion.div>

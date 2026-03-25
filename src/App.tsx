@@ -10,10 +10,18 @@ export default function App() {
     const storedTheme = localStorage.getItem("portfolio-theme");
     return storedTheme === "light";
   });
+  const [isEnglish, setIsEnglish] = useState(() => {
+    const storedLanguage = localStorage.getItem("portfolio-language");
+    return storedLanguage === "en";
+  });
 
   useEffect(() => {
     localStorage.setItem("portfolio-theme", isLightMode ? "light" : "dark");
   }, [isLightMode]);
+
+  useEffect(() => {
+    localStorage.setItem("portfolio-language", isEnglish ? "en" : "fr");
+  }, [isEnglish]);
 
   return (
     <Router>
@@ -25,6 +33,8 @@ export default function App() {
               onWorkspaceSelect={setLastWorkspace}
               isLightMode={isLightMode}
               onToggleTheme={() => setIsLightMode((prev) => !prev)}
+              isEnglish={isEnglish}
+              onToggleLanguage={() => setIsEnglish((prev) => !prev)}
             />
           }
         />
@@ -34,6 +44,8 @@ export default function App() {
             <DeveloperWorkspace
               isLightMode={isLightMode}
               onToggleTheme={() => setIsLightMode((prev) => !prev)}
+              isEnglish={isEnglish}
+              onToggleLanguage={() => setIsEnglish((prev) => !prev)}
             />
           }
         />
@@ -43,6 +55,8 @@ export default function App() {
             <BeatmakerWorkspace
               isLightMode={isLightMode}
               onToggleTheme={() => setIsLightMode((prev) => !prev)}
+              isEnglish={isEnglish}
+              onToggleLanguage={() => setIsEnglish((prev) => !prev)}
             />
           }
         />

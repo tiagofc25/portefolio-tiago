@@ -1,18 +1,23 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { Code2, Music, Moon, Sun } from "lucide-react";
+import { Code2, Music } from "lucide-react";
 import ParticleConstellationBackground from "../common/ParticleConstellationBackground";
+import ThemeSwitch from "../common/ThemeSwitch";
 
 interface LandingProps {
   onWorkspaceSelect: (workspace: "dev" | "beat") => void;
   isLightMode: boolean;
   onToggleTheme: () => void;
+  isEnglish: boolean;
+  onToggleLanguage: () => void;
 }
 
 export default function Landing({
   onWorkspaceSelect,
   isLightMode,
   onToggleTheme,
+  isEnglish,
+  onToggleLanguage,
 }: LandingProps) {
   const navigate = useNavigate();
 
@@ -52,18 +57,26 @@ export default function Landing({
         />
       </div>
 
-      <div className="absolute right-6 top-6 z-20">
+      <div className="absolute right-6 top-6 z-20 flex items-center gap-6">
         <button
-          onClick={onToggleTheme}
+          onClick={onToggleLanguage}
           className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
             isLightMode
               ? "border-slate-300 bg-white text-slate-800 hover:bg-slate-100"
               : "border-white/20 bg-white/10 text-slate-200 hover:bg-white/15"
           }`}
         >
-          {isLightMode ? <Moon size={16} /> : <Sun size={16} />}
-          {isLightMode ? "Dark" : "White"}
+          {isEnglish ? "FR" : "EN"}
         </button>
+        <ThemeSwitch
+          checked={isLightMode}
+          onChange={onToggleTheme}
+          ariaLabel={
+            isEnglish
+              ? "Toggle between light and dark mode"
+              : "Basculer entre le mode clair et sombre"
+          }
+        />
       </div>
 
       <div className="relative z-10 w-full max-w-6xl px-4">
@@ -80,7 +93,7 @@ export default function Landing({
                 : "border-white/15 bg-white/5 text-slate-300"
             }`}
           >
-            Creative Portfolio
+            {isEnglish ? "Creative Portfolio" : "Portfolio créatif"}
           </p>
           <h1
             className={`text-6xl md:text-7xl font-black bg-clip-text text-transparent mb-4 ${
@@ -94,7 +107,7 @@ export default function Landing({
           <p
             className={`text-xl ${isLightMode ? "text-slate-700" : "text-slate-300"}`}
           >
-            Developer × Beatmaker
+            {isEnglish ? "Developer × Beatmaker" : "Développeur × Beatmaker"}
           </p>
         </motion.div>
 
@@ -135,14 +148,16 @@ export default function Landing({
                       : "text-white text-shimmer"
                   }`}
                 >
-                  Developer
+                  {isEnglish ? "Developer" : "Développeur"}
                 </h2>
                 <p
                   className={`text-sm ${
                     isLightMode ? "text-slate-600" : "text-slate-300"
                   }`}
                 >
-                  Frontend & Full-Stack
+                  {isEnglish
+                    ? "Frontend & Full-Stack"
+                    : "Frontend & Full-Stack"}
                 </p>
               </div>
 
@@ -200,7 +215,9 @@ export default function Landing({
                     isLightMode ? "text-slate-600" : "text-slate-300"
                   }`}
                 >
-                  Producer • Space Chico
+                  {isEnglish
+                    ? "Producer • Space Chico"
+                    : "Producteur • Space Chico"}
                 </p>
               </div>
 
@@ -228,7 +245,11 @@ export default function Landing({
             isLightMode ? "text-slate-600" : "text-slate-400"
           }`}
         >
-          <p>Choose your universe and dive into my work</p>
+          <p>
+            {isEnglish
+              ? "Choose your universe and dive into my work"
+              : "Choisis ton univers et découvre mon travail"}
+          </p>
         </motion.div>
       </div>
     </div>

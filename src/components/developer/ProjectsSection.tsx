@@ -3,27 +3,27 @@ import { Github, ExternalLink } from "lucide-react";
 
 const featuredProjects = [
   {
-    title: "Social Network",
+    title: "Réseau social",
     description:
-      "Web and mobile social network for adding, interacting, and modifying posts",
+      "Réseau social web et mobile pour publier, interagir et modifier des posts",
     technologies: ["Next.js", "React Native", "TypeScript"],
     image:
       "https://images.pexels.com/photos/8349519/pexels-photo-8349519.jpeg?auto=compress&cs=tinysrgb&w=600",
     link: "https://github.com/tiagofc25",
   },
   {
-    title: "Event Site",
+    title: "Site d'événements",
     description:
-      "Platform for discovering event ideas and activities in Paris based on context",
+      "Plateforme pour découvrir des idées d'événements et d'activités à Paris selon le contexte",
     technologies: ["PHP", "MySQL", "REST API"],
     image:
       "https://images.pexels.com/photos/3183609/pexels-photo-3183609.jpeg?auto=compress&cs=tinysrgb&w=600",
     link: "https://github.com/tiagofc25",
   },
   {
-    title: "DVD Rental System",
+    title: "Système de location DVD",
     description:
-      "Desktop application for managing DVD rentals and library inventory",
+      "Application desktop pour gérer les locations de DVD et l'inventaire de la bibliothèque",
     technologies: ["C#", "XAML", "MySQL"],
     image:
       "https://images.pexels.com/photos/3808517/pexels-photo-3808517.jpeg?auto=compress&cs=tinysrgb&w=600",
@@ -33,9 +33,13 @@ const featuredProjects = [
 
 interface ProjectsSectionProps {
   isLightMode: boolean;
+  isEnglish: boolean;
 }
 
-export default function ProjectsSection({ isLightMode }: ProjectsSectionProps) {
+export default function ProjectsSection({
+  isLightMode,
+  isEnglish,
+}: ProjectsSectionProps) {
   return (
     <section
       className={`max-w-7xl mx-auto px-4 py-20 border-t ${
@@ -52,12 +56,14 @@ export default function ProjectsSection({ isLightMode }: ProjectsSectionProps) {
         <h2
           className={`section-title mb-2 ${isLightMode ? "text-slate-900" : ""}`}
         >
-          Featured Projects
+          {isEnglish ? "Featured Projects" : "Projets à la une"}
         </h2>
         <p
           className={`section-subtitle ${isLightMode ? "text-slate-600" : ""}`}
         >
-          Highlight of my work and recent developments
+          {isEnglish
+            ? "Highlight of my work and recent developments"
+            : "Sélection de mes réalisations récentes"}
         </p>
       </motion.div>
 
@@ -115,7 +121,7 @@ export default function ProjectsSection({ isLightMode }: ProjectsSectionProps) {
                 </div>
 
                 <div className="flex items-center gap-2 text-blue-300 group-hover:text-cyan-200 transition-colors">
-                  <span>View Project</span>
+                  <span>{isEnglish ? "View Project" : "Voir le projet"}</span>
                   <ExternalLink size={16} />
                 </div>
               </div>
@@ -138,7 +144,9 @@ export default function ProjectsSection({ isLightMode }: ProjectsSectionProps) {
           className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-400 hover:to-cyan-400 text-black font-bold py-3 px-8 rounded-xl transition-colors shadow-lg shadow-blue-500/25"
         >
           <Github size={20} />
-          View All Projects on GitHub
+          {isEnglish
+            ? "View All Projects on GitHub"
+            : "Voir tous les projets sur GitHub"}
         </a>
       </motion.div>
     </section>

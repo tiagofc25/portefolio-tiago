@@ -17,7 +17,7 @@ const skillCategories = [
     skills: ["PHP", "Symfony", "C#", "XAML", "SQL"],
   },
   {
-    title: "Tools & Platforms",
+    title: "Outils & plateformes",
     skills: [
       "Git/GitHub",
       "Bitbucket",
@@ -40,9 +40,13 @@ const skillCategories = [
 
 interface SkillsSectionProps {
   isLightMode: boolean;
+  isEnglish: boolean;
 }
 
-export default function SkillsSection({ isLightMode }: SkillsSectionProps) {
+export default function SkillsSection({
+  isLightMode,
+  isEnglish,
+}: SkillsSectionProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -78,12 +82,14 @@ export default function SkillsSection({ isLightMode }: SkillsSectionProps) {
         <h2
           className={`mb-2 section-title ${isLightMode ? "text-slate-900" : ""}`}
         >
-          Skills & Expertise
+          {isEnglish ? "Skills & Expertise" : "Compétences & expertise"}
         </h2>
         <p
           className={`section-subtitle ${isLightMode ? "text-slate-600" : ""}`}
         >
-          Technologies and tools I work with
+          {isEnglish
+            ? "Technologies and tools I work with"
+            : "Technologies et outils que j'utilise"}
         </p>
       </motion.div>
 
@@ -139,16 +145,24 @@ export default function SkillsSection({ isLightMode }: SkillsSectionProps) {
       >
         {[
           {
-            label: "Languages",
+            label: isEnglish ? "Languages" : "Langues",
             value: "4",
-            desc: "French, Portuguese, English, Spanish",
+            desc: isEnglish
+              ? "French, Portuguese, English, Spanish"
+              : "Français, Portugais, Anglais, Espagnol",
           },
           {
-            label: "Years of Experience",
+            label: isEnglish ? "Years of Experience" : "Années d'expérience",
             value: "3+",
-            desc: "In web development",
+            desc: isEnglish ? "In web development" : "En développement web",
           },
-          { label: "Projects", value: "10+", desc: "Completed professionally" },
+          {
+            label: isEnglish ? "Projects" : "Projets",
+            value: "10+",
+            desc: isEnglish
+              ? "Completed professionally"
+              : "Réalisés en contexte professionnel",
+          },
         ].map((stat, idx) => (
           <motion.div
             key={idx}

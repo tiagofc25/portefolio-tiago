@@ -3,9 +3,13 @@ import { Code2, Github, Mail } from "lucide-react";
 
 interface HeroSectionProps {
   isLightMode: boolean;
+  isEnglish: boolean;
 }
 
-export default function HeroSection({ isLightMode }: HeroSectionProps) {
+export default function HeroSection({
+  isLightMode,
+  isEnglish,
+}: HeroSectionProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -54,18 +58,15 @@ export default function HeroSection({ isLightMode }: HeroSectionProps) {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-950 to-transparent opacity-40"></div>
               </div>
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                className="absolute -inset-2 rounded-[1.8rem] border border-transparent border-t-blue-300/80 border-r-cyan-300/80"
-              ></motion.div>
             </div>
           </motion.div>
 
           <motion.div variants={itemVariants} className="md:col-span-3">
             <div className="mb-6">
               <p className="mb-4 inline-flex items-center rounded-full border border-blue-300/30 bg-blue-500/10 px-4 py-1 text-xs uppercase tracking-[0.15em] text-blue-200">
-                Available for new opportunities
+                {isEnglish
+                  ? "Available for new opportunities"
+                  : "Disponible pour de nouvelles opportunités"}
               </p>
               <h1
                 className={`text-5xl md:text-6xl font-black mb-2 ${
@@ -88,11 +89,12 @@ export default function HeroSection({ isLightMode }: HeroSectionProps) {
                 isLightMode ? "text-slate-800" : "text-slate-200"
               }`}
             >
-              Full-Stack Developer
+              {isEnglish ? "Full-Stack Developer" : "Développeur Full-Stack"}
             </p>
             <p className="text-slate-300 mb-6 max-w-2xl">
-              Building modern web applications with Next.js, React, and
-              TypeScript
+              {isEnglish
+                ? "Building modern web applications with Next.js, React, and TypeScript"
+                : "Je crée des applications web modernes avec Next.js, React et TypeScript"}
             </p>
 
             <div className="space-y-3 mb-8 text-sm text-slate-300">
@@ -102,11 +104,15 @@ export default function HeroSection({ isLightMode }: HeroSectionProps) {
               </p>
               <p>
                 <span className="font-semibold text-blue-400">🏢</span>{" "}
-                Developer at SWISH (Since Sept 2024)
+                {isEnglish
+                  ? "Developer at SWISH (Since Sept 2024)"
+                  : "Développeur chez SWISH (depuis sept. 2024)"}
               </p>
               <p>
-                <span className="font-semibold text-blue-400">🎓</span> Bachelor
-                in Application Development (CESI)
+                <span className="font-semibold text-blue-400">🎓</span>
+                {isEnglish
+                  ? "Bachelor in Application Development (CESI)"
+                  : "Bachelor Concepteur d'Applications (CESI)"}
               </p>
             </div>
 
@@ -137,7 +143,7 @@ export default function HeroSection({ isLightMode }: HeroSectionProps) {
               className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-400 hover:to-cyan-400 text-black font-bold py-3 px-8 rounded-xl transition-colors shadow-lg shadow-blue-500/25"
             >
               <Code2 size={20} />
-              View My Work
+              {isEnglish ? "View My Work" : "Voir mes projets"}
             </motion.button>
           </motion.div>
         </div>

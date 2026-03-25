@@ -81,11 +81,16 @@ export default function BeatmakerWorkspace({
             <span>{isEnglish ? "Back" : "Retour"}</span>
           </motion.button>
           <h1
-            className={`text-xl font-bold ${
+            className={`text-sm sm:text-base md:text-xl font-bold text-center leading-tight ${
               isLightMode ? "text-slate-900" : "text-white"
             }`}
           >
-            {isEnglish ? "Beatmaker Portfolio" : "Portfolio Beatmaker"}
+            <span className="sm:hidden">
+              {isEnglish ? "Beat Portfolio" : "Portfolio Beat"}
+            </span>
+            <span className="hidden sm:inline">
+              {isEnglish ? "Beatmaker Portfolio" : "Portfolio Beatmaker"}
+            </span>
           </h1>
           <div className="flex items-center gap-6">
             <LanguageHoverSwitch
@@ -108,7 +113,13 @@ export default function BeatmakerWorkspace({
 
       <div className="relative z-10 pt-20">
         <BeatmakerHeroSection
-          onExploreClick={() => setIsCatalogOpen(true)}
+          onExploreClick={() =>
+            window.open(
+              "https://spacechico-winnit.online/",
+              "_blank",
+              "noopener,noreferrer",
+            )
+          }
           isLightMode={isLightMode}
           isEnglish={isEnglish}
         />
@@ -154,7 +165,7 @@ export default function BeatmakerWorkspace({
                   : "Visite mon catalogue complet de beats et découvre toutes mes productions"}
               </p>
               <a
-                href="https:// Spacechico-winnit.online/"
+                href="https://spacechico-winnit.online/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-xl transition-colors"

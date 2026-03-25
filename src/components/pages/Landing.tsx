@@ -58,7 +58,7 @@ export default function Landing({
         />
       </div>
 
-      <div className="absolute right-6 top-6 z-20 flex items-center gap-6">
+      <div className="absolute right-3 top-3 sm:right-6 sm:top-6 z-20 flex items-center gap-2 sm:gap-6">
         <LanguageHoverSwitch
           isEnglish={isEnglish}
           isLightMode={isLightMode}
@@ -75,7 +75,7 @@ export default function Landing({
         />
       </div>
 
-      <div className="relative z-10 w-full max-w-6xl px-4">
+      <div className="relative z-10 w-full max-w-6xl px-4 pt-12 sm:pt-0">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -83,7 +83,7 @@ export default function Landing({
           className="text-center mb-14"
         >
           <p
-            className={`inline-flex mb-4 items-center rounded-full border px-4 py-1 text-xs tracking-[0.18em] uppercase ${
+            className={`inline-flex mb-4 items-center rounded-full border px-3 sm:px-4 py-1 text-[10px] sm:text-xs tracking-[0.12em] sm:tracking-[0.18em] uppercase ${
               isLightMode
                 ? "border-slate-300 bg-white text-slate-700"
                 : "border-white/15 bg-white/5 text-slate-300"
@@ -92,7 +92,7 @@ export default function Landing({
             {isEnglish ? "Creative Portfolio" : "Portfolio créatif"}
           </p>
           <h1
-            className={`text-6xl md:text-7xl font-black bg-clip-text text-transparent mb-4 ${
+            className={`text-5xl sm:text-6xl md:text-7xl font-black bg-clip-text text-transparent mb-4 ${
               isLightMode
                 ? "bg-gradient-to-r from-blue-700 via-slate-900 to-orange-600"
                 : "bg-gradient-to-r from-blue-400 via-slate-100 to-orange-400"
@@ -101,7 +101,9 @@ export default function Landing({
             TIAGO.{" "}
           </h1>
           <p
-            className={`text-xl ${isLightMode ? "text-slate-700" : "text-slate-300"}`}
+            className={`text-lg sm:text-xl ${
+              isLightMode ? "text-slate-700" : "text-slate-300"
+            }`}
           >
             {isEnglish ? "Developer × Beatmaker" : "Développeur × Beatmaker"}
           </p>

@@ -139,7 +139,7 @@ export default function ExperienceSection({
 
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="relative w-16 flex-shrink-0 flex flex-col items-center"
+                className="relative w-16 mx-auto md:mx-0 flex-shrink-0 flex flex-col items-center"
               >
                 {idx > 0 && (
                   <div className="w-1 h-8 bg-blue-500/80 rounded-full mb-2"></div>

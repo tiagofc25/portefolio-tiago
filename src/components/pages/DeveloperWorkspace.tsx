@@ -80,11 +80,16 @@ export default function DeveloperWorkspace({
             <span>{isEnglish ? "Back" : "Retour"}</span>
           </motion.button>
           <h1
-            className={`text-xl font-bold ${
+            className={`text-sm sm:text-base md:text-xl font-bold text-center leading-tight ${
               isLightMode ? "text-slate-900" : "text-white"
             }`}
           >
-            {isEnglish ? "Developer Portfolio" : "Portfolio Développeur"}
+            <span className="sm:hidden">
+              {isEnglish ? "Dev Portfolio" : "Portfolio Dev"}
+            </span>
+            <span className="hidden sm:inline">
+              {isEnglish ? "Developer Portfolio" : "Portfolio Développeur"}
+            </span>
           </h1>
           <div className="flex items-center gap-6">
             <LanguageHoverSwitch
